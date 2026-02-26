@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: rastreabilidade-api
+
+  datasource:
+    # URL do TiDB com SSL obrigatório para nuvem
+    url: jdbc:mysql://${TIDB_HOST:gateway01.us-east-1.prod.aws.tidbcloud.com}:4000/test?sslMode=VERIFY_IDENTITY
+    username: ${TIDB_USER:4Z9MbsxNaNvMeEF.root}
+    password: ${TIDB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      # 'none' porque já criamos as tabelas manualmente no TiDB
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
